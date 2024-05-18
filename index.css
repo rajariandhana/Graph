@@ -1,19 +1,44 @@
+:root
+{
+    --dark1:#25292E;
+    --dark2:#202428;
+    --red:#E97D86;
+    --orange:#F4AE7A;
+    --green:#9DE5A4;
+    --blue:#86B8F9;
+    --purple:#AE95EA;
+}
 body
+{
+    /* display: flex; */
+    /* flex-direction: row; */
+    background-color: var(--dark2);
+    font-family: Arial, Helvetica, sans-serif;
+    /* align-items: center; */
+    /* gap: 2em; */
+    padding: 1em;
+    color: white;
+}
+nav
+{
+    background-color: red;
+}
+.container
 {
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
-    /* gap: 2em; */
 }
 #myForm
 {
-    /* display: flex; */
-    /* flex-direction: column; */
+    display: flex;
+    flex-direction: row;
     /* align-items: center; */
 }
 .desc
 {
     display: flex;
     flex-direction: column;
-    
+    justify-content: center;
+    /* align-items: center; */
+    gap: 1em;
 }

@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Graph Visualization</title>
-  <script type="text/javascript" src="https://unpkg.com/vis-network@9.1.0/dist/vis-network.min.js"></script>
-  <link href="https://unpkg.com/vis-network@9.1.0/styles/vis-network.min.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="index.css">
+    <title>Graph Visualization</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network@9.1.0/dist/vis-network.min.js"></script>
+    <link href="https://unpkg.com/vis-network@9.1.0/styles/vis-network.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <div id="mynetwork" style="width: 400px; height: 400px; border: 1px solid lightgray;"></div>
-    <div class="desc">
-        <form id="myForm" class="setup">
-            <label for="n_nodes">Number of nodes:</label>
-            <input type="number" id="n_nodes" name="number">
-            <button type="submit">Create Graph</button>
-        </form>
-        <div class="options">
-            <button onclick="DFS()">DFS</button>
-            <button onclick="BFS()">BFS</button>
-        </div>
-        <div class="content">
-            <ul>
-                <li>a</li>
-                <li>a</li>
-            </ul>
+    <nav>
+        graph.ralfazza.com
+    </nav>
+    <div class="container">
+        <div id="mynetwork" style="width: 600px; height: 600px; border: 1px solid lightgray;"></div>
+        <div class="desc">
+            <form id="myForm" class="setup">
+                <label for="n_nodes">Number of nodes:</label>
+                <input type="number" id="n_nodes" name="number">
+                <button type="submit">Create Graph</button>
+            </form>
+            <div class="options">
+                <!-- <button onclick="DFS()">DFS</button> -->
+                <button onclick="BFS()">BFS</button>
+            </div>
+            <div class="content">
+                <ul class="steps">
+                    <!-- <li>a</li> -->
+                    <!-- <li>a</li> -->
+                </ul>
+            </div>
         </div>
     </div>
-    
+
     <!-- <button onclick="changeNodeColors()">Change Node Colors</button> -->
     <script type="text/javascript" src="index.js"></script>
 </body>
+
 </html>
