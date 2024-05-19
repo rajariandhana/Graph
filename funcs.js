@@ -7,7 +7,26 @@ function GetChar(number) {
 function NewGraph()
 {
     nodes = new vis.DataSet(
-        nodeList.map(node => ({ id: node, label: node, color: '#97C2FC' }))
+        // nodeList.map(node => ({ id: node, label: node, color: '#97C2FC' }))
+        nodeList.map(node => ({
+            id: node,
+            label: node,
+            color: {
+                background: 'white',
+                border: 'white'
+            },
+            font: {
+                color: 'black'
+            },
+            shape:'circle',
+            size:30,
+            labelOffset: {
+                x: 0,
+                y: 0.5
+            },
+            borderWidth: 2,
+            borderWidthSelected: 4 
+        }))
     );
     edges = new vis.DataSet(
         edgeList.map((edge, index) => ({ id: index, from: edge[0], to: edge[1], color: { color: '#848484' }, smooth: false }))
@@ -20,8 +39,8 @@ function NewGraph()
     options = {
         nodes: {
             color: {
-              border: 'yellow',
-              background: 'red'
+            //   border: 'yellow',
+            //   background: 'red'
             }
           },
         edges: {
@@ -30,8 +49,8 @@ function NewGraph()
                 roundness: 0
             },
             color: {
-                color: "yellow",
-                highlight: "red"
+                // color: "yellow",
+                // highlight: "red"
             }
         },
         physics: {
@@ -61,15 +80,28 @@ function EdgeExist(nodeA, nodeB) {
     }
     return false;
 }
-function ChangeNodeColor(newid, newcolor) {
-    nodes.update([{ id: newid, color: { background: newcolor } }]);
+function ChangeNodeColor(nodeid, newcolor) {
+    nodes.update([{ id: nodeid, color: { background: newcolor[0] }, font: {color: newcolor[1] } }]);
 }
-function ChangeEdgeColor(newid, newcolor) {
-    edges.update([{ id: newid, color: { color: newcolor } }]);
+function ChangeEdgeColor(edgeid, newcolor) {
+    edges.update([{ id: edgeid, color: { color: newcolor[0] } }]);
+}
+function HighlightNode(nodeid)
+{
+    // nodes.update([{ id: nodeid, color: { background: 'beige' }, font: {color: 'black' } }]);
+    nodes.update([{ id: nodeid, color: { border: 'beige' } }]);
+}
+function DeactivateNode(nodeid)
+{
+    // nodes.update([{ id: nodeid, color: { background: 'grey' }, font: {color: 'white' } }]);
+    nodes.update([{ id: nodeid, color: { border: 'grey' } }]);
 }
 function GetColorForLayer(layer) {
-    const colors = ['#FF5733', '#FFC300', '#33FF57', '#339CFF', '#FF33C6', '#33FFFF', '#F5A9D0', '#7B68EE', '#58D3F7', '#F1C40F'];
-    return colors[layer % colors.length];
+    // const colors = ['#FF5733', '#FFC300', '#33FF57', '#339CFF', '#FF33C6', '#33FFFF', '#F5A9D0', '#7B68EE', '#58D3F7', '#F1C40F'];
+    const colors = ['red', 'orange', 'yellow', 'lime', 'green', 'aqua', 'blue', 'purple', 'pink', '#F1C40F'];
+    const fonts = ['white','white','black','white','white','black','white','white','white','black'];
+    let i = layer%colors.length;
+    return [colors[i],fonts[i]];
 }
 function AppendStep(step) {
     let stepsList = document.querySelector('.steps');
@@ -85,6 +117,8 @@ function shuffleArray(array) {
 }
 function CreateGraph(event) {
     n_nodes = document.getElementById('n_nodes').value;
+    explanation.style.display = 'none';
+    document.getElementById('traversalType').selectedIndex = 0;
     nodeList = [];
     edgeList = [];
     const minConnections = 1;
@@ -111,19 +145,33 @@ function CreateGraph(event) {
 function Traverse(event) {
     let type = document.getElementById('traversalType').value;
     if (n_nodes < 3) return;
+    explanation.style.display = 'flex';
     if (type === 'BFS') InitBFS();
     if (type === 'DFS') FInitDFS();
 }
 function FindAdjacentEdges(node)
 {
     let adjEdges = [];
-    edgeList.forEach(edge => {
-        if(edge[0]==node) adjEdges.push([edge[0],edge[1]]);
-        else if(edge[1]==node) adjEdges.push([edge[1],edge[0]]);
+    // edgeList.forEach(edge => {
+    //     if(edge[0]==node) adjEdges.push([edge[0],edge[1]]);
+    //     else if(edge[1]==node) adjEdges.push([edge[1],edge[0]]);
+    // });
+    edges.forEach(edge=>{
+        if(node==edge.from || node==edge.to) adjEdges.push(edge);
     });
     return adjEdges;
 }
 function UpdateQueue(q)
 {
-    document.getElementById('queue').textContent = "Queue: "+ q.contents();
+    document.getElementById('queue').value = q.contents();
+}
+function UpdateVisited()
+{
+    let v = '';
+    for(let key in updateVis)
+    {
+        if(updateVis[key]==true) v+= key+" ";
+    }
+    console.log(v);
+    document.getElementById('visited').value = v;
 }

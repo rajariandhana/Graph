@@ -81,14 +81,23 @@
                 <button class="btn btn-primary" onclick="BFS()">BFS</button>
             </div> -->
             <!-- <button class="btn btn-primary" id="Start" onclick="Start()">Start</button> -->
-            <button class="btn btn-primary" onclick="NextBFS()" id="NextBFS">Next Step</button>
-            <div class="content">
-                <p id="queue">Queue: </p>
-                <p>Steps</p>
-                <ul class="steps">
+            <div class="explanation">
+                <button class="btn btn-primary" onclick="NextBFS()" id="NextBFS">Next Step</button>
+                <!-- <h4>Queue: </h4> -->
+                <!-- <h4 id="queue"></h4> -->
+                <div class="input-group">
+                    <div class="input-group-text">Queue</div>
+                    <input type="text" class="form-control" id="queue" readonly>
+                </div>
+                <div class="input-group">
+                    <div class="input-group-text">Visited</div>
+                    <input type="text" class="form-control" id="visited" readonly>
+                </div>
+                <!-- <p>Steps</p> -->
+                <!-- <ul class="steps"> -->
                     <!-- <li>blabla</li> -->
                     <!-- <li>blabla</li> -->
-                </ul>
+                <!-- </ul> -->
             </div>
         </div>
     </div>

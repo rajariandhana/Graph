@@ -43,8 +43,8 @@ a
 body
 {
     /* display: flex; */
-    /* color: white; */
-    /* background-color: var(--dark1); */
+    color: white;
+    background-color: var(--dark1);
 }
 .brand
 {
@@ -120,6 +120,12 @@ nav, nav h2, nav h4
     flex-direction: column;
     /* justify-content: flex-start; */
     /* align-items: flex-start; */
+    gap: 1em;
+}
+.explanation
+{
+    display: flex;
+    flex-direction: column;
     gap: 1em;
 }
 @media(max-width:768px)
