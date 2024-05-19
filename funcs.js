@@ -103,11 +103,27 @@ function GetColorForLayer(layer) {
     let i = layer%colors.length;
     return [colors[i],fonts[i]];
 }
-function AppendStep(step) {
-    let stepsList = document.querySelector('.steps');
-    let stepItem = document.createElement('li');
-    stepItem.textContent = step;
-    stepsList.appendChild(stepItem);
+let stepsList = document.querySelector('.steps');
+// function AppendStep(step) {
+//     let stepItem = document.createElement('li');
+//     stepItem.textContent = step;
+//     stepsList.appendChild(stepItem);
+// }
+let step = document.getElementById('step');
+function NewStep(stepText)
+{
+    step.innerHTML = '';
+    AppendStep(stepText);
+}
+function AppendStep(stepText)
+{
+    let p = document.createElement('p');
+    p.textContent = stepText;
+    step.appendChild(p);
+}
+function UpdateStep(stepText)
+{
+    curStep.textContent = step;
 }
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -160,6 +176,15 @@ function FindAdjacentEdges(node)
         if(node==edge.from || node==edge.to) adjEdges.push(edge);
     });
     return adjEdges;
+}
+function FindAdjacentNodes(node)
+{
+    let adjNodes = [];
+    edges.forEach(edge=>{
+        if(node==edge.from) adjNodes.push(edge.to);
+        else if(node==edge.to) adjNodes.push(edge.from);
+    });
+    return adjNodes;
 }
 function UpdateQueue(q)
 {

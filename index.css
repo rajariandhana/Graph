@@ -113,6 +113,11 @@ nav, nav h2, nav h4
     /* flex-direction: row; */
     /* align-items: center; */
 }
+.options
+{
+    min-width: 20em;
+    margin-bottom: 2em;
+}
 .desc
 {
     /* width: 100%; */
@@ -121,12 +126,18 @@ nav, nav h2, nav h4
     /* justify-content: flex-start; */
     /* align-items: flex-start; */
     gap: 1em;
+    max-width: 30em;
 }
 .explanation
 {
     display: flex;
     flex-direction: column;
     gap: 1em;
+}
+.exp
+{
+    background-color: red;
+    max-height: 200px;
 }
 @media(max-width:768px)
 {

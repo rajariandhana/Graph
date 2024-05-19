@@ -35,8 +35,8 @@
                             <h4 class="red">BFS</h4>
                         </a></li>
                     <li class="nav-item px-3"><a class="nav-link" href="/">
-                        <h4 class="blue">DFS</h4>
-                    </a></li>
+                            <h4 class="blue">DFS</h4>
+                        </a></li>
                 </ul>
             </div>
         </div>
@@ -44,45 +44,46 @@
     <div class="main">
         <div class="graph" id="mynetwork" style="width: 500px; height: 500px; border: 1px solid lightgray;"></div>
         <div class="desc">
-            <form class="input-group mb-3">
-                <label class="input-group-text" for="n_nodes">Number of nodes</label>
-                <select class="form-select" id="n_nodes">
-                    <option selected>Choose...</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                </select>
-            </form>
-            <form class="input-group mb-3">
-                <label class="input-group-text" for="traversalType">Traversal</label>
-                <select class="form-select" id="traversalType">
-                    <option selected>Choose...</option>
-                    <option value="BFS">BFS</option>
-                    <option value="DFS">DFS</option>
-                </select>
-            </form>
+            <div class="options">
+                <form class="input-group mb-3">
+                    <label class="input-group-text" for="n_nodes">Number of nodes</label>
+                    <select class="form-select" id="n_nodes">
+                        <option selected>Choose...</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select>
+                </form>
+                <form class="input-group mb-3">
+                    <label class="input-group-text" for="traversalType">Traversal</label>
+                    <select class="form-select" id="traversalType">
+                        <option selected>Choose...</option>
+                        <option value="BFS">BFS</option>
+                        <option value="DFS">DFS</option>
+                    </select>
+                </form>
+            </div>
             <!-- <div class="options">
                 <button class="btn btn-primary" onclick="DFS()">DFS</button>
                 <button class="btn btn-primary" onclick="BFS()">BFS</button>
             </div> -->
             <!-- <button class="btn btn-primary" id="Start" onclick="Start()">Start</button> -->
             <div class="explanation">
-                <button class="btn btn-primary" onclick="NextBFS()" id="NextBFS">Next Step</button>
                 <!-- <h4>Queue: </h4> -->
                 <!-- <h4 id="queue"></h4> -->
                 <div class="input-group">
@@ -93,6 +94,8 @@
                     <div class="input-group-text">Visited</div>
                     <input type="text" class="form-control" id="visited" readonly>
                 </div>
+                <div id="step"></div>
+                <button class="btn btn-primary" onclick="NextBFS()" id="NextBFS">Next Step</button>
                 <!-- <p>Steps</p> -->
                 <!-- <ul class="steps"> -->
                     <!-- <li>blabla</li> -->
