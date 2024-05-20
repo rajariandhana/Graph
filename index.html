@@ -73,8 +73,8 @@
                     <label class="input-group-text" for="traversalType">Traversal</label>
                     <select class="form-select" id="traversalType">
                         <option selected>Choose...</option>
-                        <option value="BFS">BFS</option>
-                        <option value="DFS">DFS</option>
+                        <option value="BFS">Breadth First Search</option>
+                        <option value="DFS">Depth First Search</option>
                     </select>
                 </form>
             </div>
@@ -87,15 +87,15 @@
                 <!-- <h4>Queue: </h4> -->
                 <!-- <h4 id="queue"></h4> -->
                 <div class="input-group">
-                    <div class="input-group-text">Queue</div>
-                    <input type="text" class="form-control" id="queue" readonly>
+                    <div class="input-group-text dsdiv">DS</div>
+                    <input type="text" class="form-control" id="ds" readonly>
                 </div>
                 <div class="input-group">
                     <div class="input-group-text">Visited</div>
                     <input type="text" class="form-control" id="visited" readonly>
                 </div>
                 <div id="step"></div>
-                <button class="btn btn-primary" onclick="NextBFS()" id="NextBFS">Next Step</button>
+                <button class="btn btn-primary" id="Next">Next Step</button>
                 <!-- <p>Steps</p> -->
                 <!-- <ul class="steps"> -->
                     <!-- <li>blabla</li> -->
@@ -111,9 +111,11 @@
     </script>
     <!-- <script type="text/javascript" src="index.js"></script> -->
     <script src="queue.js"></script>
+    <script src="stack.js"></script>
     <script src="funcs.js"></script>
     <script src="graph.js"></script>
-    <script src="index2.js"></script>
+    <script src="bfs.js"></script>
+    <script src="dfs.js"></script>
 
 </body>
 

@@ -138,7 +138,9 @@ function CreateGraph(event) {
     nodeList = [];
     edgeList = [];
     const minConnections = 1;
-    const maxConnections = Math.min(n_nodes - 1, 5);
+    // const maxConnections = Math.min(n_nodes - 1, 5);
+    const maxConnections = 3;
+
 
     for (let i = 1; i <= n_nodes; i++) {
         let nodeA = GetChar(i);
@@ -163,7 +165,7 @@ function Traverse(event) {
     if (n_nodes < 3) return;
     explanation.style.display = 'flex';
     if (type === 'BFS') InitBFS();
-    if (type === 'DFS') FInitDFS();
+    if (type === 'DFS') InitDFS();
 }
 function FindAdjacentEdges(node)
 {
@@ -186,9 +188,28 @@ function FindAdjacentNodes(node)
     });
     return adjNodes;
 }
-function UpdateQueue(q)
+function FindEdge(nodeA, nodeB)
+{ 
+    let res = null;
+    edges.forEach(edge=>{
+        if((nodeA==edge.from && nodeB==edge.to) || (nodeA==edge.to && nodeB==edge.from))
+        {
+            res = edge;
+            // return edge;
+        }
+    });
+    // for(let edge of edges)
+    // {
+    //     if((nodeA==edge.from && nodeB==edge.to) || (nodeA==edge.to && nodeB==edge.from))
+    //     {
+    //         return edge;
+    //     }
+    // }
+    return res;
+}
+function UpdateDS(ds)
 {
-    document.getElementById('queue').value = q.contents();
+    document.getElementById('ds').value = ds.contents();
 }
 function UpdateVisited()
 {
@@ -200,3 +221,37 @@ function UpdateVisited()
     console.log(v);
     document.getElementById('visited').value = v;
 }
+function HighlightEdge(edge)
+{
+    ChangeEdgeColor(edge.id, "red");
+}
+function HighlightAdjEdge(node) {
+    let adjEdges = FindAdjacentEdges(node);
+    adjEdges.forEach(edge => {
+        ChangeEdgeColor(edge.id, "red");
+    });
+}
+
+function HighlightAdjUnvEdge(node) {
+    let adjEdges = FindAdjacentEdges(node);
+    adjEdges.forEach(edge => {
+        if (edge.from == node && !visited[edge.to] || edge.to == node && !visited[edge.from]) {
+            ChangeEdgeColor(edge.id, "blue");
+        }
+    });
+}
+
+let visited = {};
+let updateVis = {};
+let layer = 0;
+let nodesInCurrentLayer = 0;
+let nodesInNextLayer = 0;
+let prevNode = null;
+let prevPrev = null;
+let nodeLayer = {};
+let edgeLayer = {};
+let visCtr = 0;
+document.getElementById('n_nodes').addEventListener('change', CreateGraph);
+document.getElementById('traversalType').addEventListener('change', Traverse);
+let explanation = document.querySelector('.explanation')
+explanation.style.display = 'none';
